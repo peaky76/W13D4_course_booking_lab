@@ -25,7 +25,7 @@ public class Course {
     @Column(name="star_rating")
     private int starRating;
 
-    @JsonBackReference
+//    @JsonBackReference
     @OneToMany(mappedBy = "course")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Booking> bookings;
@@ -35,6 +35,10 @@ public class Course {
         this.town = town;
         this.starRating = starRating;
         this.bookings = new ArrayList<Booking>();
+    }
+
+    public Course() {
+
     }
 
     public Long getId() {

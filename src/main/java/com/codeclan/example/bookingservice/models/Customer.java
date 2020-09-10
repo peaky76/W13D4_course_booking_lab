@@ -1,6 +1,7 @@
 package com.codeclan.example.bookingservice.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -24,7 +25,7 @@ public class Customer {
     @Column
     private int age;
 
-    @JsonBackReference
+//    @JsonBackReference
     @OneToMany(mappedBy = "customer")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<Booking> bookings;
@@ -34,6 +35,10 @@ public class Customer {
         this.town = town;
         this.age = age;
         this.bookings = new ArrayList<Booking>();
+    }
+
+    public Customer() {
+
     }
 
     public Long getId() {

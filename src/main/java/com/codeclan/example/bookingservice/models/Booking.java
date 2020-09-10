@@ -15,20 +15,24 @@ public class Booking {
     @Column
     private String date; // Format: "dd-mm-yy"
 
-    @JsonIgnoreProperties({"bookings"})
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
+    @JsonIgnoreProperties({"bookings"})
     private Course course;
 
-    @JsonIgnoreProperties({"bookings"})
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
+    @JsonIgnoreProperties({"bookings"})
     private Customer customer;
 
     public Booking(String date, Course course, Customer customer) {
         this.date = date;
         this.course = course;
         this.customer = customer;
+    }
+
+    public Booking() {
+
     }
 
     public Long getId() {
